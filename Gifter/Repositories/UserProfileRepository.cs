@@ -23,5 +23,21 @@ namespace Gifter.Repositories
         {
             return _context.UserProfile.FirstOrDefault(u => u.Id == id);
         }
+        public void Add(UserProfile userProfile)
+        {
+            _context.Add(userProfile);
+            _context.SaveChanges();
+        }
+        public void Update(UserProfile userProfile)
+        {
+            _context.Entry(userProfile).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
+        }
+        public void Delete(int id)
+        {
+            var userProfile = GetUserById(id);
+            _context.UserProfile.Remove(userProfile);
+            _context.SaveChanges();
+        }
     }
 }
