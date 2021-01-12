@@ -53,5 +53,19 @@ namespace Gifter.Repositories
             _context.Post.Remove(post);
             _context.SaveChanges();
         }
+        public List<Post> Search(string searchTerm, bool oldestFirst)
+        {
+            var query = _context.Post
+                .Where(p => p.Title.Contains(searchTerm));
+
+            if (oldestFirst == true)
+            {
+                return query.OrderBy(p => p.DateCreated).ToList();
+            }
+            else
+            {
+                return query.OrderByDescending(p => p.DateCreated).ToList();
+            }
+        }
     }
 }

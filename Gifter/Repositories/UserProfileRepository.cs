@@ -1,5 +1,6 @@
 ﻿using Gifter.Data;
 using Gifter.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,13 +31,18 @@ namespace Gifter.Repositories
         }
         public void Update(UserProfile userProfile)
         {
-            _context.Entry(userProfile).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.Entry(userProfile).State = EntityState.Modified;
             _context.SaveChanges();
         }
         public void Delete(int id)
         {
-            var userProfile = GetUserById(id);
-            _context.UserProfile.Remove(userProfile);
+            var userToDelete = _context.UserProfile
+                .Where(u => u.Id == id) // Find the user by id
+                .Include(u => u.Comments) // Comments they've made
+                .Include(u => u.Posts) // Posts they've written
+                .ThenInclude(p => p.Comments); // All Comments on posts they've written
+
+            _context.UserProfile.RemoveRange(userToDelete);
             _context.SaveChanges();
         }
     }
