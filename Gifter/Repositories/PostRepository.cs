@@ -55,6 +55,8 @@ namespace Gifter.Repositories
             _context.Post.Remove(post);
             _context.SaveChanges();
         }
+
+        //search for term and date
         public List<Post> Search(string criterion, bool sortDescending)
         {
             var query = _context.Post
