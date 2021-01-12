@@ -11,5 +11,7 @@ namespace Gifter.Repositories
         Post GetById(int id);
         List<Post> GetByUserProfileId(int id);
         void Update(Post post);
+        List<Post> Search(string searchTerm, bool recent);
+
     }
 }

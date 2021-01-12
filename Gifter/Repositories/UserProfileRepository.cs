@@ -1,5 +1,6 @@
 ﻿using Gifter.Data;
 using Gifter.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,15 @@ namespace Gifter.Repositories
         }
         public void Delete(int id)
         {
+            //Delete the post from that user first & include the comments on the post
+            var userPost = _context.Post.Include(p => p.Comment).Where(p => p.UserProfileId == id);
+            _context.Post.RemoveRange(userPost);
+
+            //Delete the comments the user has made on other posts
+            var commmentsToDelete = _context.Comment.Where(c => c.UserProfileId == id);
+            _context.Comment.RemoveRange(commmentsToDelete);
+
+            //Delete the user
             var userProfile = GetUserById(id);
             _context.UserProfile.Remove(userProfile);
             _context.SaveChanges();
