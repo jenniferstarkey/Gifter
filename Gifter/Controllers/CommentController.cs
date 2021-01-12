@@ -1,4 +1,5 @@
-﻿using Gifter.Repositories;
+﻿using Gifter.Models;
+using Gifter.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,24 +13,61 @@ namespace Gifter.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
-        private readonly ICommentRepository _commentRepository;
-        public CommentController(ICommentRepository commentRepository)
+        private readonly ICommentRepository _commentRepo;
+
+        public CommentController(ICommentRepository commentRepo)
         {
-            _commentRepository = commentRepository;
+            _commentRepo = commentRepo;
         }
-        public IActionResult Get()
-        {
-            return Ok(_commentRepository.GetAll());
-        }
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var user = _commentRepository.GetCommentsOnPost(id);
-            if (user == null)
+            var comment = _commentRepo.GetById(id);
+            if (comment == null)
             {
                 return NotFound();
             }
-            return Ok(user);
+            return Ok(comment);
+        }
+
+        [HttpGet("getbypost/{id}")]
+        public IActionResult GetByPost(int id)
+        {
+            return Ok(_commentRepo.GetByPostId(id));
+        }
+
+        [HttpPost]
+        public IActionResult Post(Comment comment)
+        {
+            _commentRepo.Add(comment);
+            return CreatedAtAction("Get", new { id = comment.Id }, comment);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Comment comment)
+        {
+            var c = _commentRepo.GetById(id);
+            if (id != comment.Id || c == null)
+            {
+                return BadRequest();
+            }
+            _commentRepo.Update(comment);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            Comment comment = _commentRepo.GetById(id);
+
+            if (comment == null)
+            {
+                return BadRequest();
+            }
+
+            _commentRepo.Delete(id);
+            return NoContent();
         }
     }
 }

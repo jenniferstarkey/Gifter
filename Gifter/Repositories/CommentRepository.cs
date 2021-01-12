@@ -15,27 +15,35 @@ namespace Gifter.Repositories
         {
             _context = context;
         }
-
-        public List<Comment> GetCommentsOnPost(int postId)
+        public List<Comment> GetByPostId(int id)
         {
-            return _context.Comment.Include(p => p.UserProfile).Include(p => p.Post)
-                .Where(c => c.PostId == postId).ToList();
+            return _context.Comment
+                 .Include(c => c.UserProfile)
+                .Include(c => c.Post)
+                .Where(c => c.UserProfileId == id).ToList();
         }
+
         public Comment GetById(int id)
         {
-            return _context.Comment.Include(p => p.UserProfile).Include(p => p.Post)
-                .FirstOrDefault(predicate => predicate.Id == id);
+            return _context.Comment
+                .Include(c => c.UserProfile)
+                .Include(c => c.Post)
+                .FirstOrDefault(c => c.Id == id);
         }
+
         public void Add(Comment comment)
         {
             _context.Add(comment);
             _context.SaveChanges();
         }
+
         public void Update(Comment comment)
         {
             _context.Entry(comment).State = EntityState.Modified;
             _context.SaveChanges();
         }
+
+
         public void Delete(int id)
         {
             var comment = GetById(id);
@@ -44,4 +52,3 @@ namespace Gifter.Repositories
         }
     }
 }
-

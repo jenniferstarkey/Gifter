@@ -5,7 +5,7 @@ namespace Gifter.Repositories
 {
     public interface ICommentRepository
     {
-        List<Comment> GetCommentsOnPost(int postId);
+        List<Comment> GetByPostId(int id);
         public Comment GetById(int id);
         public void Add(Comment comment);
         public void Update(Comment comment);
