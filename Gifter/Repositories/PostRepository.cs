@@ -24,7 +24,9 @@ namespace Gifter.Repositories
 
         public Post GetById(int id)
         {
-            return _context.Post.Include(p => p.UserProfile).FirstOrDefault(p => p.Id == id);
+            return _context.Post.Include(p => p.UserProfile)
+                           .Include(p => p.Comment)
+                           .FirstOrDefault(p => p.Id == id);
         }
 
         //Filtering Data with LINQ

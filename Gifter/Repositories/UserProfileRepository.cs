@@ -36,17 +36,13 @@ namespace Gifter.Repositories
         }
         public void Delete(int id)
         {
-            //Delete the post from that user first & include the comments on the post
-            var userPost = _context.Post.Include(p => p.Comment).Where(p => p.UserProfileId == id);
-            _context.Post.RemoveRange(userPost);
+            var userToDelete = _context.UserProfile
+                .Where(u => u.Id == id) // Find the user by id
+                .Include(u => u.Comments) // Comments they've made
+                .Include(u => u.Posts) // Posts they've written
+                .ThenInclude(p => p.Comment); // All Comments on posts they've written
 
-            //Delete the comments the user has made on other posts
-            var commmentsToDelete = _context.Comment.Where(c => c.UserProfileId == id);
-            _context.Comment.RemoveRange(commmentsToDelete);
-
-            //Delete the user
-            var userProfile = GetUserById(id);
-            _context.UserProfile.Remove(userProfile);
+            _context.UserProfile.RemoveRange(userToDelete);
             _context.SaveChanges();
         }
     }
