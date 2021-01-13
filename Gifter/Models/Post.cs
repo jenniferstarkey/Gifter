@@ -24,6 +24,7 @@ namespace Gifter.Models
         [Required]
         public int UserProfileId { get; set; }
 
+        //bring in profile and comments 
         public UserProfile UserProfile { get; set; }
         public List<Comment> Comment { get; set; }
     }
