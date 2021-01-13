@@ -158,3 +158,6 @@ C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\Gifter.dll
 C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\ref\Gifter.dll
 C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\Gifter.pdb
 C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\Gifter.genruntimeconfig.cache
+C:\Users\stark\workspace\Gifter\Gifter\bin\Debug\net5.0\client\package-lock.json
+C:\Users\stark\workspace\Gifter\Gifter\bin\Debug\net5.0\client\package.json
+C:\Users\stark\workspace\Gifter\Gifter\bin\Debug\net5.0\client\public\manifest.json
