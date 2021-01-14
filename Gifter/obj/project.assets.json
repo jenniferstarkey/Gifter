@@ -7780,8 +7780,7 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 5.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.1",
-      "Swashbuckle.AspNetCore >= 5.6.3",
-      "Swashbuckle.AspNetCore.Swagger >= 5.6.3"
+      "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
   "packageFolders": {
@@ -7864,10 +7863,6 @@
             "version": "[5.0.1, )"
           },
           "Swashbuckle.AspNetCore": {
-            "target": "Package",
-            "version": "[5.6.3, )"
-          },
-          "Swashbuckle.AspNetCore.Swagger": {
             "target": "Package",
             "version": "[5.6.3, )"
           }

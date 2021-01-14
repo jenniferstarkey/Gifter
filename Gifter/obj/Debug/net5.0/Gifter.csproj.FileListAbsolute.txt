@@ -142,7 +142,6 @@ C:\Users\stark\workspace\Gifter\Gifter\bin\Debug\net5.0\runtimes\win-x64\native\
 C:\Users\stark\workspace\Gifter\Gifter\bin\Debug\net5.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\stark\workspace\Gifter\Gifter\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\stark\workspace\Gifter\Gifter\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\Gifter.csprojAssemblyReference.cache
 C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\Gifter.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\Gifter.AssemblyInfoInputs.cache
 C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\Gifter.AssemblyInfo.cs
@@ -158,6 +157,7 @@ C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\Gifter.dll
 C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\ref\Gifter.dll
 C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\Gifter.pdb
 C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\Gifter.genruntimeconfig.cache
+C:\Users\stark\workspace\Gifter\Gifter\obj\Debug\net5.0\Gifter.csprojAssemblyReference.cache
 C:\Users\stark\workspace\Gifter\Gifter\bin\Debug\net5.0\client\package-lock.json
 C:\Users\stark\workspace\Gifter\Gifter\bin\Debug\net5.0\client\package.json
 C:\Users\stark\workspace\Gifter\Gifter\bin\Debug\net5.0\client\public\manifest.json
