@@ -23,6 +23,14 @@ export const PostProvider = (props) => {
             .then(getPosts);
     };
 
+    const getPostById = (id) => {
+        return fetch(`/api/post/${id}`).then((res) => res.json());
+    };
+
+    const getPostByUserId = (id) => {
+        return fetch(`/api/post/getbyuser/${id}`).then((res) => res.json());
+    };
+
     const searchPosts = (searchString, inOrder) => {
         return fetch(`/api/post/search?q=${searchString}&sortDesc=${inOrder}`)
             .then((res) => res.json())
@@ -38,6 +46,8 @@ export const PostProvider = (props) => {
                 searchPosts,
                 setSearchTerms,
                 searchTerms,
+                getPostById,
+                getPostByUserId,
             }}
         >
             {props.children}
