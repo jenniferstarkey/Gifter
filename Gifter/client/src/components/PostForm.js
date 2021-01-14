@@ -20,7 +20,7 @@ const PostForm = () => {
     const history = useHistory();
 
     const addPost = (post) => {
-        return fetch('/api/posts', {
+        return fetch('/api/post', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(post)
@@ -34,6 +34,7 @@ const PostForm = () => {
             title,
             caption,
             userProfileId: +userProfileId,
+            dateCreated: new Date(Date.now()).toDateString()
         };
 
         addPost(post).then((p) => {
